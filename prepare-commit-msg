@@ -1,27 +1,25 @@
-
-#!/bin/bash -
+#!/bin/bash
 #===============================================================================
 #
-#          FILE: commit-msg.sh
+#          FILE: prepare-commit-msg
 #
-#         USAGE: ./commit-msg.sh
+#         USAGE: ./prepare-commit-msg
 #
-#   DESCRIPTION: 
+#   DESCRIPTION: ---
 #
 #       OPTIONS: ---
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
 #        AUTHOR: ---, 
-#  ORGANIZATION: 
+#  ORGANIZATION: ---
 #       CREATED: 09/27/2021 01:24:48 AM
-#      REVISION:  ---
+#      REVISION:  2021-10-29 15:24
 #===============================================================================
-
-set -o nounset                                  # Treat unset variables as an error
+set -o nounset
 
 BACKUP=/var/run/user/$UID/last_commit.log
-[[ -e  $BACKUP ]] && [[ -z "$(awk 'NR==1' $BACKUP)" ]] && rm $BACKUP
+[[ -e  $BACKUP ]] && [[ -z $(awk 'NR==1' $BACKUP) ]] && rm $BACKUP
 [[ -e  $BACKUP ]] && cat $BACKUP > $1 && rm $BACKUP
 
-exit 0;
+exit 0
